@@ -4,8 +4,8 @@ function moveButton() {
 
     var btn = document.getElementById('noBtn');
     
-    // Apply new positions
-    btn.style.position = 'absolute'; // Ensure it's absolute
+    // Use 'fixed' so it positions relative to the screen, not the container
+    btn.style.position = 'fixed'; 
     btn.style.left = x + 'px';
     btn.style.top = y + 'px';
 }
