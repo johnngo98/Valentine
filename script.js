@@ -1,20 +1,29 @@
 function moveButton() {
-    var x = Math.random() * (window.innerWidth - 100); // Random x position
-    var y = Math.random() * (window.innerHeight - 100); // Random y position
-
     var btn = document.getElementById('noBtn');
-    
-    // Use 'fixed' so it positions relative to the screen, not the container
-    btn.style.position = 'fixed'; 
-    btn.style.left = x + 'px';
-    btn.style.top = y + 'px';
+    var container = document.querySelector('.container'); // The white box
+
+    // Get the dimensions of the container and the button
+    var containerRect = container.getBoundingClientRect();
+    var btnRect = btn.getBoundingClientRect();
+
+    // Calculate valid range for the button to stay INSIDE the container
+    // We subtract the button size so it doesn't hang off the edge
+    var maxX = containerRect.width - btnRect.width;
+    var maxY = containerRect.height - btnRect.height;
+
+    // Generate random position within these limits
+    var randomX = Math.floor(Math.random() * maxX);
+    var randomY = Math.floor(Math.random() * maxY);
+
+    // Apply the new position
+    // We use 'absolute' so it moves relative to the .container (the white box)
+    btn.style.position = 'absolute';
+    btn.style.left = randomX + 'px';
+    btn.style.top = randomY + 'px';
 }
 
 function sayYes() {
-    // Hide the question and photo
     document.getElementById('main-content').style.display = 'none';
-    
-    // Show the success message and gif
     document.getElementById('success-message').classList.remove('hidden');
     document.getElementById('success-message').style.display = 'block';
 }
