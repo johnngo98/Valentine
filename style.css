@@ -6,17 +6,20 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    overflow: hidden; /* Prevents scrollbars when button moves */
+    overflow: hidden;
 }
 
 .container {
     text-align: center;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     max-width: 600px;
     width: 90%;
+    
+    /* CRITICAL: This acts as the fence for the No button */
+    position: relative; 
 }
 
 h1 {
@@ -37,14 +40,17 @@ h1 {
 
 .buttons {
     margin-top: 20px;
-    height: 100px; /* Specific height to give buttons space */
-    position: relative; /* Needed for the absolute positioning of the No button */
+    
+    /* Flexbox for perfect centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between buttons */
 }
 
 button {
     font-size: 1.5rem;
     padding: 10px 30px;
-    margin: 10px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -67,10 +73,9 @@ button {
     background-color: white;
     color: #333;
     border: 2px solid #ccc;
-    position: absolute; /* Allows it to move freely */
+    /* We don't set position absolute here yet, so it stays centered initially */
 }
 
-/* Success Message Styling */
 .hidden {
     display: none;
 }
